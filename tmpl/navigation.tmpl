@@ -10,6 +10,13 @@ var self = this;
     <ul class="list">
     <?js
     this.nav.forEach(function (item) {
+        if(item.type === 'divider') {
+    ?>
+        <li class="item">
+            <?js= item.name ?>
+        </li>
+    <?js
+        } else {
     ?>
         <li class="item" data-name="<?js= self.longnameToUrl[item.longname].replace(/\.html/, '') ?>">
             <span class="title">
@@ -76,6 +83,9 @@ var self = this;
             ?>
             </ul>
         </li>
-    <?js }); ?>
+    <?js
+        }
+    });
+    ?>
     </ul>
 </div>

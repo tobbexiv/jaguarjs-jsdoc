@@ -200,11 +200,20 @@ function buildNav(members) {
     var nav = [];
     
     if (members.externals.length) {
+    	nav.push({
+            type: 'divider',
+            longname: 'Externals',
+            name: 'Externals',
+            members: [],
+            methods: [],
+            typedefs: [],
+            events: []
+        });
         _.each(members.externals, function (v) {
             nav.push({
                 type: 'external',
                 longname: v.longname,
-                name: 'external:' + v.name.replace(/(^"|"$)/g, ''),
+                name: v.name.replace(/(^"|"$)/g, ''),
                 members: find({
                     kind: 'member',
                     memberof: v.longname
@@ -226,6 +235,15 @@ function buildNav(members) {
     }
 
     if (members.namespaces.length) {
+    	nav.push({
+            type: 'divider',
+            longname: 'Namespaces',
+            name: 'Namespaces',
+            members: [],
+            methods: [],
+            typedefs: [],
+            events: []
+        });
         _.each(members.namespaces, function (v) {
             nav.push({
                 type: 'namespace',
@@ -252,6 +270,15 @@ function buildNav(members) {
     }
 
     if (members.classes.length) {
+    	nav.push({
+            type: 'divider',
+            longname: 'Classes',
+            name: 'Classes',
+            members: [],
+            methods: [],
+            typedefs: [],
+            events: []
+        });
         _.each(members.classes, function (v) {
             nav.push({
                 type: 'class',
