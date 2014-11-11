@@ -198,6 +198,32 @@ function attachModuleSymbols(doclets, modules) {
  */
 function buildNav(members) {
     var nav = [];
+    
+    if (members.externals.length) {
+        _.each(members.externals, function (v) {
+            nav.push({
+                type: 'external',
+                longname: v.longname,
+                name: 'external:' + v.name.replace(/(^"|"$)/g, ''),
+                members: find({
+                    kind: 'member',
+                    memberof: v.longname
+                }),
+                methods: find({
+                    kind: 'function',
+                    memberof: v.longname
+                }),
+                typedefs: find({
+                    kind: 'typedef',
+                    memberof: v.longname
+                }),
+                events: find({
+                    kind: 'event',
+                    memberof: v.longname
+                })
+            });
+        });
+    }
 
     if (members.namespaces.length) {
         _.each(members.namespaces, function (v) {
