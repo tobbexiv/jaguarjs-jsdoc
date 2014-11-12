@@ -146,6 +146,12 @@ li {
 .main h4.name > span.type-signature:first-child {
   margin-right: 8px;
 }
+.main h4.name span.signature span.optional:before {
+  content: "[";
+}
+.main h4.name span.signature span.optional:after {
+  content: "]";
+}
 .main h4.name span.type {
   margin-left: 5px;
 }

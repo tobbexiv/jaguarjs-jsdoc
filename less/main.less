@@ -56,6 +56,16 @@
         & > span.type-signature:first-child {
             margin-right: 8px;
         }
+        
+        span.signature span.optional {
+            &:before {
+                content: "[";
+            }
+            
+            &:after {
+                content: "]";
+            }
+        }
 
         span.type {
             margin-left: 5px;
