@@ -20,7 +20,7 @@ var self = this;
     ?>
         <li class="item" data-name="<?js= self.longnameToUrl[item.longname].replace(/\.html/, '') ?>">
             <span class="title">
-                <?js= self.linkto(item.longname, item.name) ?>
+                <?js= self.linkto(item.longname, item.longname.replace(/^.*:/g, '')) ?>
                 <?js if (item.type === 'namespace') { ?>
                 <span class="static">static</span>
                 <?js } ?>
