@@ -213,7 +213,7 @@ function buildNav(members) {
             nav.push({
                 type: 'external',
                 longname: v.longname,
-                name: v.name.replace(/(^"|"$)/g, ''),
+                name: v.name,
                 members: find({
                     kind: 'member',
                     memberof: v.longname
@@ -418,6 +418,20 @@ exports.publish = function(taffyData, opts, tutorials) {
             });
         });
     }
+    
+    data().each(function(doclet) {
+        if(doclet.name) {
+            doclet.name = doclet.name.replace(/(^"|"$)/g, '');
+        }
+        
+        if(doclet.longname) {
+            doclet.longname = doclet.longname.replace(/"/g, '');
+        }
+        
+        if(doclet.memberof) {
+            doclet.memberof = doclet.memberof.replace(/"/g, '');
+        }
+    });
     
     if (sourceFilePaths.length) {
         sourceFiles = shortenPaths( sourceFiles, path.commonPrefix(sourceFilePaths) );
